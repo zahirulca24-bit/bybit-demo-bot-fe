@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+
+/*
+  AXIS Terminal visual system — institutional blue-slate ink base.
+  teal/cyan = up/long, rose = down/short, amber = accent/warning.
+*/
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-panel: var(--panel);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-bull: var(--bull);
+  --color-bull-soft: var(--bull-soft);
+  --color-bear: var(--bear);
+  --color-bear-soft: var(--bear-soft);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ma-fast: var(--ma-fast);
+  --color-ma-slow: var(--ma-slow);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+}
+
+:root {
+  color-scheme: dark;
+
+  --background: oklch(0.155 0.017 255);
+  --foreground: oklch(0.93 0.008 250);
+
+  --surface: oklch(0.19 0.018 255);
+  --surface-2: oklch(0.225 0.02 255);
+  --panel: oklch(0.205 0.019 255);
+
+  --muted: oklch(0.27 0.02 255);
+  --muted-foreground: oklch(0.64 0.02 250);
+
+  --border: oklch(0.29 0.018 255);
+  --border-strong: oklch(0.36 0.02 255);
+
+  --primary: oklch(0.82 0.12 195);
+  --primary-foreground: oklch(0.17 0.02 255);
+
+  --bull: oklch(0.8 0.13 185);
+  --bull-soft: oklch(0.8 0.13 185 / 0.14);
+  --bear: oklch(0.68 0.19 18);
+  --bear-soft: oklch(0.68 0.19 18 / 0.14);
+
+  --accent: oklch(0.83 0.14 78);
+  --accent-foreground: oklch(0.18 0.02 255);
+
+  --ma-fast: oklch(0.82 0.12 195);
+  --ma-slow: oklch(0.83 0.14 78);
+
+  --ring: oklch(0.82 0.12 195);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@keyframes axis-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  animation: axis-ticker 48s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+@keyframes axis-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.animate-live {
+  animation: axis-pulse 1.8s ease-in-out infinite;
+}
